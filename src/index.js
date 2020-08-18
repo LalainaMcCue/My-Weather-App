@@ -21,19 +21,19 @@ function todayDate(current) {
     current.getMinutes();
 
   let nextDay = document.querySelector(".nextDay");
-  nextDay.innerHTML = abrvWeekDays[current.getDay() + 1];
+  nextDay.innerHTML = abrvWeekDays[(current.getDay() + 1) % 7];
 
   let twoDays = document.querySelector(".twoDays");
-  twoDays.innerHTML = abrvWeekDays[current.getDay() + 2];
+  twoDays.innerHTML = abrvWeekDays[(current.getDay() + 2) % 7];
 
   let threeDays = document.querySelector(".threeDays");
-  threeDays.innerHTML = abrvWeekDays[current.getDay() + 3];
+  threeDays.innerHTML = abrvWeekDays[(current.getDay() + 3) % 7];
 
   let fourDays = document.querySelector(".fourDays");
-  fourDays.innerHTML = abrvWeekDays[current.getDay() + 4];
+  fourDays.innerHTML = abrvWeekDays[(current.getDay() + 4) % 7];
 
   let fiveDays = document.querySelector(".fiveDays");
-  fiveDays.innerHTML = abrvWeekDays[current.getDay() + 5];
+  fiveDays.innerHTML = abrvWeekDays[(current.getDay() + 5) % 7];
 
   let greeting = document.querySelector(".greeting");
   if (current.getHours() < 12) {
