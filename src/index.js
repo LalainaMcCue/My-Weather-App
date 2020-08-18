@@ -1,9 +1,24 @@
 function todayDate(current) {
   let dateDisplay = document.querySelector(".date");
   let month = current.getMonth() + 1;
-  dateDisplay.innerHTML = weekDays[current.getDay()] + " " + month + "/" + current.getDate() + "/" + current.getFullYear();
+  dateDisplay.innerHTML =
+    weekDays[current.getDay()] +
+    " " +
+    month +
+    "/" +
+    current.getDate() +
+    "/" +
+    current.getFullYear();
   let updateTime = document.querySelector(".update-time");
-  updateTime.innerHTML = "Last updated " + month + "/" + current.getDate() + "   " + current.getHours() + ":" + current.getMinutes();
+  updateTime.innerHTML =
+    "Last updated " +
+    month +
+    "/" +
+    current.getDate() +
+    "   " +
+    current.getHours() +
+    ":" +
+    current.getMinutes();
 
   let nextDay = document.querySelector(".nextDay");
   nextDay.innerHTML = abrvWeekDays[current.getDay() + 1];
@@ -20,7 +35,6 @@ function todayDate(current) {
   let fiveDays = document.querySelector(".fiveDays");
   fiveDays.innerHTML = abrvWeekDays[current.getDay() + 5];
 
-
   let greeting = document.querySelector(".greeting");
   if (current.getHours() < 12) {
     greeting.innerHTML = "Good Morning";
@@ -31,11 +45,7 @@ function todayDate(current) {
   } else {
     greeting.innerHTML = "Good Afternoon";
   }
-};
-
-
-
-
+}
 
 function changeCity(event) {
   event.preventDefault();
@@ -45,17 +55,14 @@ function changeCity(event) {
   let apiKey = "7f2bcb3fa67c76b6d051afd4ec0b0d33";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchCity.value}&units=imperial`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(weatherFunction);
-};
+}
 //Go back to my city or location
 let pinButton = document.querySelector(".myLocation-button");
 pinButton.addEventListener("click", findMyLocation);
 
-
-
-
 function weatherFunction(response) {
   //My City
-  let myCity = (response.data.name);
+  let myCity = response.data.name;
   let h1 = document.querySelector(".city");
   h1.innerHTML = myCity;
 
@@ -70,22 +77,21 @@ function weatherFunction(response) {
   //Switching temp from F to C
   function tempSwitchFtoC(event) {
     let degCel = document.querySelector(".temp-now");
-    let cel = Math.round((currentTemp - 32) * 5 / 9);
+    let cel = Math.round(((currentTemp - 32) * 5) / 9);
     degCel.innerHTML = cel;
 
-    //Switching temp from C to F 
+    //Switching temp from C to F
     function tempSwitchCtoF(event) {
       let degFar = document.querySelector(".temp-now");
-      let far = Math.round((cel * 9 / 5) + 32);
+      let far = Math.round((cel * 9) / 5 + 32);
       degFar.innerHTML = far;
-    };
-
+    }
 
     let CtoF = document.querySelector(".farenheit");
     CtoF.addEventListener("click", tempSwitchCtoF);
-  };
+  }
 
-  console.log(response)
+  console.log(response);
 }
 
 function myLocation(position) {
@@ -101,7 +107,15 @@ function findMyLocation() {
   navigator.geolocation.getCurrentPosition(myLocation);
 }
 
-let weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+let weekDays = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 let abrvWeekDays = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
 todayDate(new Date());
 

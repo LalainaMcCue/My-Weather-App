@@ -61,9 +61,10 @@ div.card {
   margin: 0px auto;
   padding: 5px 0px 25px;
 }
-.celcius:hover,.farenheit:hover {
+.celcius:hover,
+.farenheit:hover {
   font-weight: bold;
-  cursor:pointer;
+  cursor: pointer;
 }
 .high-low {
   margin-top: 10px;
