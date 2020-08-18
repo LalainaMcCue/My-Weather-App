@@ -1,0 +1,107 @@
+body {
+  background-image: linear-gradient(-225deg, #20e2d7 0%, #f9fea5 100%);
+}
+h1.city {
+  font-family: "Permanent Marker", cursive;
+  font-size: 60px;
+  text-align: center;
+  margin: 0 auto;
+}
+h3 {
+  text-align: center;
+  margin: 0 auto;
+}
+p,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+p {
+  font-size: 18px;
+  margin: 0px;
+}
+footer {
+  margin: 0px auto 15px;
+}
+.search {
+  display: block;
+  margin: 15px auto 10px;
+  width: 600px;
+}
+.search-bar {
+  opacity: 75%;
+  text-indent: 15px;
+  width: 449px;
+}
+.myLocation-button {
+  padding: 1px 15px;
+}
+.search-button {
+  padding: 1px 35px;
+}
+.container {
+  display: block;
+  margin: 0px auto 100px;
+}
+div.card {
+  border-radius: 20px;
+  margin: 0 auto;
+  opacity: 95%;
+  width: 600px;
+}
+.greeting {
+  font-size: 20px;
+  margin: 0px auto;
+  padding: 25px 0px 0px;
+}
+.date {
+  font-size: 20px;
+  margin: 0px auto;
+  padding: 5px 0px 25px;
+}
+.celcius:hover,.farenheit:hover {
+  font-weight: bold;
+  cursor:pointer;
+}
+.high-low {
+  margin-top: 10px;
+}
+.today-icon {
+  left: 30px;
+  position: relative;
+  text-align: center;
+  top: 20px;
+}
+.today-icon-title {
+  margin-top: 10px;
+}
+.currently {
+  margin: 0px;
+}
+
+.update-time {
+  font-style: italic;
+  margin: 0px 10px 5px;
+  text-align: right;
+}
+.week {
+  text-align: center;
+}
+.tomorrow {
+  bottom: 6px;
+  left: 23px;
+  position: relative;
+}
+.day {
+  position: relative;
+  top: 20px;
+}
+.sign {
+  text-align: center;
+}
+.tag {
+  color: blue;
+  font-weight: bold;
+}
