@@ -91,18 +91,18 @@ div.card {
   text-align: center;
 }
 .tomorrow {
-  bottom: 6px;
+  margin: 0px 0px;
+  bottom: 10px;
   left: 23px;
   position: relative;
+}
+.tomorrow-head {
+  margin: 0px 0px 5px;
 }
 .day {
   position: relative;
   top: 20px;
 }
-.sign {
+.repository {
   text-align: center;
-}
-.tag {
-  color: blue;
-  font-weight: bold;
 }
