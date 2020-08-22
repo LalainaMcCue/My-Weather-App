@@ -63,6 +63,11 @@ function weatherFunction(response) {
   let h1 = document.querySelector(".city");
   h1.innerHTML = myCity;
 
+  //Weather Icon Description
+  let description = document.querySelector(".today-icon-title");
+  let iconTitle = response.data.weather[0].description;
+  description.innerHTML = iconTitle;
+
   //My Current Temp
   let currentTemp = Math.round(response.data.main.temp);
   let myTemp = document.querySelector(".temp-now");
