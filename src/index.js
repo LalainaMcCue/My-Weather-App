@@ -85,7 +85,7 @@ function weatherFunction(response) {
     //Switching temp from C to F
     function tempSwitchCtoF(event) {
       let degFar = document.querySelector(".temp-now");
-      let far = Math.round((cel * 9) / 5 + 32);
+      let far = currentTemp;
       degFar.innerHTML = far;
     }
 
