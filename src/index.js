@@ -103,6 +103,14 @@ function weatherFunction(response) {
   let humidity = Math.round(response.data.main.humidity);
   humid.innerHTML = humidity;
 
+  //icon
+  let icon = document.querySelector(".icon");
+  let iconCode = response.data.weather[0].icon;
+  icon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${iconCode}@4x.png`
+  );
+
   console.log(response);
 }
 

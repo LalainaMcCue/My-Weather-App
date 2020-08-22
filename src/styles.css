@@ -73,12 +73,14 @@ div.card {
   left: 30px;
   position: relative;
   text-align: center;
-  top: 20px;
+  bottom: 20px;
 }
 .today-icon-title {
   margin-top: 10px;
   text-transform: capitalize;
   font-weight: bold;
+  position: relative;
+  bottom: 35px;
 }
 .currently {
   margin: 0px;
