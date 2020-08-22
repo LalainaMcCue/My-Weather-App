@@ -9,16 +9,13 @@ function todayDate(current) {
     current.getDate() +
     "/" +
     current.getFullYear();
+  let hours = current.getHours();
+  let minutes = current.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
   let updateTime = document.querySelector(".update-time");
-  updateTime.innerHTML =
-    "Last updated " +
-    month +
-    "/" +
-    current.getDate() +
-    "   " +
-    current.getHours() +
-    ":" +
-    current.getMinutes();
+  updateTime.innerHTML = `Last updated ${month}/${current.getDate()}   ${hours}:${minutes}`;
 
   let nextDay = document.querySelector(".nextDay");
   nextDay.innerHTML = abrvWeekDays[(current.getDay() + 1) % 7];
