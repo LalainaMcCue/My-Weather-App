@@ -36,7 +36,13 @@ footer {
   width: 449px;
 }
 .myLocation-button {
-  padding: 1px 15px;
+  padding: 2px 15px;
+  border: 1px solid;
+  border-radius: 3px;
+  border-color: rgb(118, 118, 118);
+}
+.myLocation-button:hover {
+  background-color: #e5e5e5;
 }
 .search-button {
   padding: 1px 35px;
