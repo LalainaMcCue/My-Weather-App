@@ -93,6 +93,16 @@ function weatherFunction(response) {
     CtoF.addEventListener("click", tempSwitchCtoF);
   }
 
+  //Wind speed
+  let wind = document.querySelector(".windSpeed");
+  let windSpeed = Math.round(response.data.wind.speed);
+  wind.innerHTML = windSpeed;
+
+  //Humidity
+  let humid = document.querySelector(".humidity");
+  let humidity = Math.round(response.data.main.humidity);
+  humid.innerHTML = humidity;
+
   console.log(response);
 }
 
