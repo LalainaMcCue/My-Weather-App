@@ -100,18 +100,13 @@ div.card {
 .week {
   text-align: center;
 }
-.tomorrow {
-  margin: 0px 0px;
-  bottom: 10px;
-  left: 23px;
+.forcast-days {
   position: relative;
+  left: 50px;
 }
-.tomorrow-head {
-  margin: 0px 0px 5px;
-}
-.day {
+.forcast-icon {
   position: relative;
-  top: 20px;
+  right: 10px;
 }
 .repository {
   text-align: center;

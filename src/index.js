@@ -17,21 +17,6 @@ function todayDate(current) {
   let updateTime = document.querySelector(".update-time");
   updateTime.innerHTML = `Last updated ${month}/${current.getDate()}   ${hours}:${minutes}`;
 
-  let nextDay = document.querySelector(".nextDay");
-  nextDay.innerHTML = abrvWeekDays[(current.getDay() + 1) % 7];
-
-  let twoDays = document.querySelector(".twoDays");
-  twoDays.innerHTML = abrvWeekDays[(current.getDay() + 2) % 7];
-
-  let threeDays = document.querySelector(".threeDays");
-  threeDays.innerHTML = abrvWeekDays[(current.getDay() + 3) % 7];
-
-  let fourDays = document.querySelector(".fourDays");
-  fourDays.innerHTML = abrvWeekDays[(current.getDay() + 4) % 7];
-
-  let fiveDays = document.querySelector(".fiveDays");
-  fiveDays.innerHTML = abrvWeekDays[(current.getDay() + 5) % 7];
-
   let greeting = document.querySelector(".greeting");
   if (current.getHours() < 12) {
     greeting.innerHTML = "Good Morning";
@@ -52,6 +37,8 @@ function changeCity(event) {
   let apiKey = "7f2bcb3fa67c76b6d051afd4ec0b0d33";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchCity.value}&units=imperial`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(weatherFunction);
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${searchCity.value}&units=imperial`;
+  axios.get(`${apiUrl}&appid=${apiKey}`).then(displayForcast);
 }
 //Go back to my city or location
 let pinButton = document.querySelector(".myLocation-button");
@@ -79,19 +66,33 @@ function weatherFunction(response) {
   //Switching temp from F to C
   function tempSwitchFtoC(event) {
     let degCel = document.querySelector(".temp-now");
-    let cel = Math.round(((currentTemp - 32) * 5) / 9);
-    degCel.innerHTML = cel;
+    let celMain = Math.round(((currentTemp - 32) * 5) / 9);
+    let celHigh = Math.round(((high - 32) * 5) / 9);
+    let celLow = Math.round(((low - 32) * 5) / 9);
+    degCel.innerHTML = celMain;
+    highTemp.innerHTML = celHigh;
+    lowTemp.innerHTML = celLow;
 
     //Switching temp from C to F
     function tempSwitchCtoF(event) {
       let degFar = document.querySelector(".temp-now");
       let far = currentTemp;
       degFar.innerHTML = far;
+      highTemp.innerHTML = high;
+      lowTemp.innerHTML = low;
     }
 
     let CtoF = document.querySelector(".farenheit");
     CtoF.addEventListener("click", tempSwitchCtoF);
   }
+
+  //High|Low
+  let highTemp = document.querySelector(".high");
+  let high = Math.round(response.data.main.temp_max);
+  highTemp.innerHTML = high;
+  let lowTemp = document.querySelector(".low");
+  let low = Math.round(response.data.main.temp_min);
+  lowTemp.innerHTML = low;
 
   //Wind speed
   let wind = document.querySelector(".windSpeed");
@@ -114,6 +115,38 @@ function weatherFunction(response) {
   console.log(response);
 }
 
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${hours}:${minutes}`;
+}
+
+function displayForcast(response) {
+  let forcastElement = document.querySelector("#forcast");
+  forcastElement.innerHTML = null;
+  let forcast = null;
+  for (let index = 0; index < 5; index++) {
+    forcast = response.data.list[index];
+
+    forcastElement.innerHTML += `
+      <div class="col-2 forcast-days">
+        <p class="forcast-time">${formatHours(forcast.dt * 1000)}</p>
+        <img src = "https://openweathermap.org/img/wn/${
+          forcast.weather[0].icon
+        }@2x.png" class="forcast-icon"/>
+        <p class="high-low"><strong><span class="forcastHigh">${Math.round(
+          forcast.main.temp_max
+        )}</span></strong>  |  <span class="forcastLow">${Math.round(
+      forcast.main.temp_min
+    )}</span></p>
+      </div>`;
+  }
+}
+
 function myLocation(position) {
   let lat = position.coords.latitude;
   let long = position.coords.longitude;
@@ -121,6 +154,9 @@ function myLocation(position) {
   let apiKey = "7f2bcb3fa67c76b6d051afd4ec0b0d33";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=imperial`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(weatherFunction);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&units=imperial`;
+  axios.get(`${apiUrl}&appid=${apiKey}`).then(displayForcast);
 }
 
 function findMyLocation() {
@@ -136,7 +172,6 @@ let weekDays = [
   "Friday",
   "Saturday",
 ];
-let abrvWeekDays = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
 todayDate(new Date());
 
 //Search for the city

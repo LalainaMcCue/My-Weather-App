@@ -43,17 +43,20 @@
         </h3>
         <div class="row">
           <div class="col-6 today-icon">
-            <img src="" class="icon"/>
+            <img src="" class="icon" />
             <h5 class="today-icon-title">Partly Cloudy</h5>
           </div>
           <div class="col-6">
             <div class="card-body">
               <p class="currently">Currently</p>
               <h2>
-                <span class="temp-now">80</span>
+                <span class="temp-now"> </span>
                 <span class="celcius">℃</span> |<span class="farenheit">℉</span>
               </h2>
-              <h4 id="highLow"><strong>85</strong> | 75</h4>
+              <h4 id="highLow">
+                <strong><span class="high">85</span></strong> |
+                <span class="low">75</span>
+              </h4>
               <p>
                 Wind: <span class="windSpeed"></span> mph <br />
                 Humidity: <span class="humidity"></span>%
@@ -62,41 +65,15 @@
           </div>
         </div>
         <hr />
-        <div class="row week">
-          <div class="col-3 tomorrow">
-            <p class="tomorrow-head"><strong>Tomorrow</strong></p>
-            <p class="nextDay">Thurs</p>
-            <i class="fas fa-cloud-sun fa-2x"></i>
-            <p class="high-low"><strong>85</strong> | 75</p>
-          </div>
-          <div class="col-2 day">
-            <p class="twoDays">Fri</p>
-            <i class="fas fa-cloud-sun fa-2x"></i>
-            <p class="high-low"><strong>85</strong> | 75</p>
-          </div>
-          <div class="col-2 day">
-            <p class="threeDays">Sat</p>
-            <i class="fas fa-cloud-sun fa-2x"></i>
-            <p class="high-low"><strong>85</strong> | 75</p>
-          </div>
-          <div class="col-2 day">
-            <p class="fourDays">Sun</p>
-            <i class="fas fa-cloud-sun fa-2x"></i>
-            <p class="high-low"><strong>85</strong> | 75</p>
-          </div>
-          <div class="col-2 day">
-            <p class="fiveDays">Mon</p>
-            <i class="fas fa-cloud-sun fa-2x"></i>
-            <p class="high-low"><strong>85</strong> | 75</p>
-          </div>
-        </div>
+        <div class="row week" id="forcast"></div>
         <p class="update-time">Updated 7/29 11:00 am</p>
       </div>
     </div>
     <footer class="repository">
       <a href="https://github.com/LalainaMcCue/My-Weather-App" target="_blank"
         >Open-source code</a
-      >, by Lalaina McCue
+      >
+      by Lalaina McCue
     </footer>
 
     <script src="src/index.js"></script>
